@@ -2,6 +2,6 @@
 **/core*
 **/*.out
 **/*.err
-bin/*.o
-bin/main
+bin/*
+!bin/.gitkeep
 **/*.pdf
