@@ -7,16 +7,19 @@
 # Purpose:    
 #############################################################################
 
+#compiler=clang
+compiler=gcc
+
 all: bin bin/main
 
 bin:
 	mkdir -p bin
 
 bin/main: bin bin/main.o
-	gcc -o bin/main -g -Wall bin/main.o
+	${compiler} -o bin/main -g -Wall bin/main.o
 
 bin/main.o: src/main.c
-	gcc -c -o bin/main.o -g -Wall src/main.c
+	${compiler} -c -o bin/main.o -g -Wall src/main.c
 
 valgrind: bin/main
 	valgrind -v --leak-check=yes --track-origins=yes --leak-check=full --show-leak-kinds=all bin/main
