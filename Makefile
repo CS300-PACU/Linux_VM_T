@@ -7,25 +7,35 @@
 # Purpose:    
 #############################################################################
 
-#compiler=clang
-compiler=gcc
+#CC=clang
+CC=gcc
+CFLAGS=-g -Wall
+TARGETS=bin bin/main
+VALGRIND_FLAGS=-v --leak-check=yes --track-origins=yes --leak-check=full --show-leak-kinds=all
+ENSCRIPT_FLAGS=-C -T 2 -p - -M Letter -Ec --color -fCourier8
 
-all: bin bin/main
+all: bin ${TARGETS}
 
 bin:
 	mkdir -p bin
 
-bin/main: bin bin/main.o
-	${compiler} -o bin/main -g -Wall bin/main.o
+bin/%: bin/%.o
+	${CC} -o $@ ${CFLAGS} $^
 
-bin/main.o: src/main.c
-	${compiler} -c -o bin/main.o -g -Wall src/main.c
+bin/%.o: src/%.c bin
+	${CC} -c -o $@ ${CFLAGS} $<
+
+#bin/main: bin bin/main.o
+#	${CC} -o bin/main ${CFLAGS} bin/main.o
+
+#bin/main.o: src/main.c
+#	${CC} -c -o bin/main.o ${CFLAGS} src/main.c
 
 valgrind: bin/main
-	valgrind -v --leak-check=yes --track-origins=yes --leak-check=full --show-leak-kinds=all bin/main
+	valgrind ${VALGRIND_FLAGS} bin/main
 
 printAll:
-	enscript -C -T 2 -p - -M Letter -Ec --color -fCourier8 src/main.c  | ps2pdf - bin/main.pdf
+	enscript ${ENSCRIPT_FLAGS} src/main.c  | ps2pdf - bin/main.pdf
 
 clean:
-	rm -f bin/main bin/*.o
+	rm -f ${TARGETS} bin/*.o
