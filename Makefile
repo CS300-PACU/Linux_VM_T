@@ -19,12 +19,15 @@ all: bin ${TARGETS}
 bin:
 	mkdir -p bin
 
+# Use Automatic variables to generate rules
+# https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html
 bin/%: bin/%.o
 	${CC} -o $@ ${CFLAGS} $^
 
 bin/%.o: src/%.c bin
 	${CC} -c -o $@ ${CFLAGS} $<
 
+# Custom rules
 #bin/main: bin bin/main.o
 #	${CC} -o bin/main ${CFLAGS} bin/main.o
 
