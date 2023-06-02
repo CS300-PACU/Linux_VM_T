@@ -7,6 +7,11 @@
 
 [Linux tar command](https://wizardzines.com/comics/tar/)
 
+### Code Formatting
+Apply the coding standards via:
+* Windows: ```SHIFT + ALT + F```
+* Mac: ```SHIFT + OPTION + F```
+* Linux: ```CTRL + SHIFT + I```
 
 Notes
 * [Using expressions in the watch panel with LLDB](https://github.com/vadimcn/vscode-lldb/blob/master/MANUAL.md#native-expressions)
