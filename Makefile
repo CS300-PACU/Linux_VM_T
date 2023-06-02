@@ -53,9 +53,6 @@ bin/%.o: src/%.c
 clean:
 	rm -rf bin/*.o ${TARGETS} bin/*.pdf
 
-valgrind: bin/main
-	valgrind ${VALGRIND_FLAGS} bin/main
-
 printAll:
 	enscript ${ENSCRIPT_FLAGS} src/main.c  | ps2pdf - bin/main.pdf
 
