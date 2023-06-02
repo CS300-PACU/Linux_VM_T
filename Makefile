@@ -27,11 +27,7 @@ ENSCRIPT_FLAGS=-C -T 2 -p - -M Letter -Ec --color -fCourier8
 # the list continues on the next line.  WARNING: There must be no characters
 # other than the newline after the \.  A blank space after the \ gives errors. 
 
-TARGETS=bin/pointers bin/pointersWorksheet  bin/pointersTest \
-	bin/pointerToStaticData bin/charArraysAndStrings bin/fileIO \
-	bin/handles bin/bitShift bin/structExample  bin/structExampleWithStrings \
-	bin/examstats bin/commandLineArgs bin/resizeArray bin/functionPointers \
-	bin/helloworld
+TARGETS=bin/main
 
 all: bin ${TARGETS}
 
@@ -57,14 +53,14 @@ bin/%.o: src/%.c
 clean:
 	rm -rf bin/*.o ${TARGETS} bin/*.pdf
 
-valgrind: bin/examstats
-	valgrind ${VALGRIND_FLAGS} bin/examstats
+valgrind: bin/main
+	valgrind ${VALGRIND_FLAGS} bin/main
 
-printexamstats:
-	enscript ${ENSCRIPT_FLAGS} src/examstats.c  | ps2pdf - bin/examstats.pdf
+printAll:
+	enscript ${ENSCRIPT_FLAGS} src/main.c  | ps2pdf - bin/main.pdf
 
-valgrindresizeArray: bin/resizeArray
-	valgrind ${VALGRIND_FLAGS} bin/resizeArray
+valgrind: bin/main
+	valgrind ${VALGRIND_FLAGS} bin/main
 
 # https://www.gnu.org/software/make/manual/html_node/Chained-Rules.html
 # https://www.gnu.org/software/make/manual/html_node/Special-Targets.html
