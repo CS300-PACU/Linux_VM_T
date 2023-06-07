@@ -14,6 +14,7 @@ Apply the coding standards via:
 * Linux: ```CTRL + SHIFT + I```
 
 Notes
+* [GDB to LLDB Command Mapping](https://lldb.llvm.org/use/map.html)
 * [Using expressions in the watch panel with LLDB](https://github.com/vadimcn/vscode-lldb/blob/master/MANUAL.md#native-expressions)
 * To view the data pointed to by a void* 
   *   For LLDB: 
