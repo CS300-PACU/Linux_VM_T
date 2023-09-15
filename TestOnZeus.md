@@ -12,7 +12,7 @@ ssh punetid@zeus.cs.pacificu.edu
 
 ssh-keygen -t ed25519
 
-cat ~/.ssh/ed25519.pub
+cat ~/.ssh/id_ed25519.pub
 ```
 
 [GitHub SSH Keys](https://github.com/settings/keys) - [https://github.com/settings/keys](https://github.com/settings/keys)
