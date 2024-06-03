@@ -56,6 +56,9 @@ clean:
 printAll:
 	enscript ${ENSCRIPT_FLAGS} src/main.c  | ps2pdf - bin/main.pdf
 
+printAnswers:
+	enscript ${ENSCRIPT_FLAGS} Answers.txt  | ps2pdf - bin/Answers.pdf
+
 valgrind: bin/main
 	valgrind ${VALGRIND_FLAGS} bin/main
 
