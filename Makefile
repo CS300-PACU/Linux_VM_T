@@ -45,7 +45,7 @@ bin/%.o: src/%.c
 
 # Custom rules
 # bin/helloworld: bin/helloworld.o 
-# 	${CC} ${CFLAGS} -o bin/functionPointers bin/functionPointers.o 
+# 	${CC} ${CFLAGS} -o bin/helloworld bin/helloworld.o 
 	
 # bin/helloworld.o: src/helloworld.c
 # 	${CC} ${CFLAGS} -o bin/helloworld.o -c src/helloworld.c
